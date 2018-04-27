@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Plugin 1</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <button id="reverse">Reverse me</button>
+        
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>  
+        <script>
+            $.fn.reverse = function(preserveCapitalization = false) {
+                    $(this).click(function(){
+                        var newArray = $(this).text().split("").reverse().join("");
+                        
+                    if (!preserveCapitalization) {
+                        console.log(newArray);
+                        $(this).text(newArray);    
+                    } else {
+                        console.log(newArray);
+                        var rest = newArray.toLowerCase().slice(1);
+                        console.log(rest);
+                        newArray = newArray.toLowerCase()[0].toUpperCase() + rest;
+                        console.log(newArray);
+                       $(this).text(newArray); 
+                        
+                }
+                    });
+                };
+            
+            
+            $(document).ready(function() {
+                
+                $("#reverse").reverse(true);
+            });
+        </script>    
+    </body>
+</html>
